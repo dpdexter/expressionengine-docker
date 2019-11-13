@@ -1,0 +1,9 @@
+#! /bin/bash
+
+ECHO "[0] Preflight checks:"
+if ! [ -x "$(command -v mysqldump)" ]; then
+    printf "Mysqldump is not installed, exiting\\n"
+    exit 1
+fi
+
+mysqldump  --column-statistics=0 -u [SITENAME] -h 127.0.0.1 -P 3307 -p[MYSQL_PASSWORD] [SITENAME] > ./db/[SITENAME].sql

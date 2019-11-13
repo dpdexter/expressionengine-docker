@@ -1,0 +1,9 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+
+build/docker-compose.yml
+build/dbdump.sh
+data
+public
+system

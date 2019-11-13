@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mysql -u [SITENAME] -h 127.0.0.1 -P 3307 -p[MYSQL_PASSWORD] [SITENAME] < ./db/[SITENAME].sql

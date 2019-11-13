@@ -1,0 +1,39 @@
+version: "3.7"
+services:
+    mailhog:
+      image: mailhog/mailhog:latest
+      container_name: [SITENAME]-mailhog
+      ports:
+        - "9001:8025"
+    mysql:
+      image: mysql:5.7
+      container_name: [SITENAME]-mysql
+      working_dir: /application
+      volumes:
+        - ./phpdocker/mysql/data:/var/lib/data
+        - ./phpdocker/mysql/cnf:/etc/mysql/conf.d
+      environment:
+        - MYSQL_ROOT_PASSWORD=[SITENAME]
+        - MYSQL_DATABASE=[SITENAME]
+        - MYSQL_USER=[SITENAME]
+        - MYSQL_PASSWORD=[MYSQL_PASSWORD]
+      ports:
+        - "3307:3306"
+    webserver:
+      image: nginx:alpine
+      restart: unless-stopped
+      container_name: [SITENAME]-webserver
+      working_dir: /application
+      volumes:
+        - ..:/application:cached
+        - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:cached
+        - ./phpdocker/nginx/conf.d:/etc/nginx/conf.d:cached
+      ports:
+        - "80:80"
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: [SITENAME]-php-fpm
+      working_dir: /application
+      volumes:
+        - ..:/application:cached
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
