@@ -1,10 +1,12 @@
-# expressionengine-docker
-A simple script to setup an ExpressionEngine site with Docker and Docker Compose. I wrote and tested this on my MacBook.... 
+# ExpressionEngine with Docker
+A script to setup an ExpressionEngine site with Docker and Docker Compose. I wrote and tested this on my MacBook.... 
 
 ## Pre-requisites
-* Docker 
+* [Docker](https://docs.docker.com/docker-for-mac/)
 * Docker Compose 
 * Mysql client
+    * Not a requirement for setup since MySQL is running in a container, but the startup and dump scripts rely on mysql and mysqldump locally. 
+    * I use [brew](https://brew.sh/) for all things Mac related. 
 
 ## Usage
 * clone repo
