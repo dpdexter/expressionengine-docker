@@ -10,6 +10,10 @@ A simple script to setup an ExpressionEngine site with Docker and Docker Compose
 * clone repo
 * To setup the inital project from terminal run: 
     * `./init.sh`
+* To download the database: 
+    * `./data/dbdump.sh `
+* To inport the downloaded database on startup
+    * `./data/startup.sh `
 
 ## IMPORTANT
 Because we are using docker to communicate between containers you must use the MySQL Host name output at the end of the script to configure ExpressionEngine. 

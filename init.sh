@@ -81,6 +81,7 @@ mysql -u $MYSITE -p$MYSITE -P 3307 -h 127.0.0.1 $MYSITE -e "create database $MYS
 # create the db dump / startup scripts
 ECHO "[11] Creating your database backup and startup scripts"
 mkdir ../data
+mkdir ../data/db 
 chmod -R 777 ../data
 cp startup.example ../data/startup.sh
 cp dbdump.example ../data/dbdump.sh
