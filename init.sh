@@ -76,7 +76,7 @@ docker-compose up -d
 
 # create the default database
 ECHO "[10] Creating your database"
-mysql -u $MYSITE -p$MYSITE -P 3307 -h 127.0.0.1 $MYSITE -e "create database $MYSITE;" >> /dev/null 2>&1
+mysql -u $MYSITE -p$MYSQL_PASSWORD -P 3307 -h 127.0.0.1 $MYSITE -e "create database $MYSITE;" >> /dev/null 2>&1
 
 # create the db dump / startup scripts
 ECHO "[11] Creating your database backup and startup scripts"
